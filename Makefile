@@ -16,7 +16,7 @@ INCLUDES_DIR = $(shell find $(INC_DIR)/ -type d)
 INCLUDES = $(patsubst %, -I%, $(INCLUDES_DIR))
 
 vpath %.cpp src
-vpath %.h include
+vpath %.hpp include
 
 # SRC_FILES=$(wildcard $(SRC_DIR)/*.cpp)
 SRC_FILES=$(shell find $(SRC_DIR)/ -type f -name '*.cpp')
