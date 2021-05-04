@@ -3,13 +3,13 @@ EXT = .out
 FNAME = $(NAME)$(EXT)
 
 CC =  g++
-FLAGS = -std=c++98 -Wall -Werror -Wextra
+FLAGS = -std=c++11 -Wall -Werror -Wextra
 LIBS =
 
 INC_DIR = include
 SRC_DIR = src
 OBJ_DIR = obj
-BIN_DIR = build
+BIN_DIR = .
 
 #INCLUDES = -Iinclude
 INCLUDES_DIR = $(shell find $(INC_DIR)/ -type d)
