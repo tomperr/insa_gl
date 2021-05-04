@@ -4,17 +4,22 @@ FNAME = $(NAME)$(EXT)
 
 CC =  g++
 FLAGS = -std=c++98 -Wall -Werror -Wextra
-INCLUDES = -Iinclude
 LIBS =
 
+INC_DIR = include
 SRC_DIR = src
 OBJ_DIR = obj
 BIN_DIR = build
 
+#INCLUDES = -Iinclude
+INCLUDES_DIR = $(shell find $(INC_DIR)/ -type d)
+INCLUDES = $(patsubst %, -I%, $(INCLUDES_DIR))
+
 vpath %.cpp src
 vpath %.h include
 
-SRC_FILES=$(wildcard $(SRC_DIR)/*.cpp)
+# SRC_FILES=$(wildcard $(SRC_DIR)/*.cpp)
+SRC_FILES=$(shell find $(SRC_DIR)/ -type f -name '*.cpp')
 OBJ_FILES=$(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
 $(OBJ_DIR)/%.o: %.cpp
