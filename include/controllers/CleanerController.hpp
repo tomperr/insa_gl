@@ -8,7 +8,7 @@ class CleanerController
         
         void ShowData() ;
 
-        void ShowCleanerEffect() ;
+        void ShowCleanerEffect() ; // function to show the effect of a cleaner
 	
 };
 
