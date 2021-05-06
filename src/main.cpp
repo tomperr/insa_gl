@@ -2,6 +2,7 @@
 #include "Sensor.hpp"
 #include "Cleaner.hpp"
 #include "Measurement.hpp"
+#include "Private.hpp"
 
 #include <map>
 #include <ctime>
@@ -59,6 +60,18 @@ int main(void)
         cout << " activity_end:" << row.second.GetActivityEnd().tm_mday << "/" << row.second.GetActivityEnd().tm_mon << "/" << row.second.GetActivityEnd().tm_year << " " << row.second.GetActivityEnd().tm_hour << ":" << row.second.GetActivityEnd().tm_min;
         cout << endl; 
     }
+
+    Private::ReadAll();
+    for(auto& row : Private::privates)
+    {
+         cout << "id : "<<row.first<<endl;
+         vector <Sensor> sensors = row.second.GetSensors();
+         for(int i=0; i<sensors.size();++i){
+             cout << "\t sensor id : "<<sensors[i].GetId()<<endl;
+         }
+         cout<< endl;
+    }
+
 
     return 0;
 }

@@ -4,7 +4,9 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <vector> 
 #include "User.hpp"
+#include "Sensor.hpp"
 
 using namespace std;
 
@@ -15,10 +17,15 @@ class Private : public User
     // Variable statique
     static map<string, Private> privates;
 
+    //Méthode publique
+    Private ();
+    Private (string id, vector <Sensor> sensors);
+
 	// Méthodes statiques
     static void ReadAll();
     static void LinkAll();
 
+    vector <Sensor> GetSensors();
     bool GetTrust();
     void SetTrust(bool trust);
     void AddScore(int toBeAdded);
@@ -28,6 +35,8 @@ class Private : public User
     static string filename;      
     static bool fileHasBeenRead;      
     static bool objectsHaveBeenLinked;
+
+    vector <Sensor> sensors;
 
 };
 
