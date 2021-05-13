@@ -66,7 +66,7 @@ int main(void)
     {
          cout << "id : "<<row.first<<endl;
          vector <Sensor> sensors = row.second.GetSensors();
-         for(int i=0; i<sensors.size();++i){
+         for(long unsigned int i=0; i<sensors.size();++i){
              cout << "\t sensor id : "<<sensors[i].GetId()<<endl;
          }
          cout<< endl;
