@@ -59,7 +59,7 @@ void Cleaner::ReadAll()
 
                 getline(file, buffer, ';');
                 std::istringstream ss_acEnd(buffer);
-                ss_acStart >> std::get_time(&tmBuffer, "%Y-%m-%d %H:%M:%S");
+                ss_acEnd >> std::get_time(&tmBuffer, "%Y-%m-%d %H:%M:%S");
                 newCleaner.activity_end = tmBuffer;
 
                 getline(file, buffer); // Enlever le \r\n de fin de ligne

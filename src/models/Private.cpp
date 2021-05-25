@@ -12,7 +12,7 @@ Private::Private ()
     //silence is golden
 }
 
-Private :: Private(string id, vector <Sensor> sensors)
+Private :: Private(string id, vector <Sensor*> sensors)
 {
     this->id=id;
     this->sensors=sensors;
@@ -41,7 +41,7 @@ void Private::ReadAll()
                     map<string, Sensor>::iterator it;
                     it=Sensor::sensors.find(buffer);
 
-                    newPrivate.sensors.push_back(it->second);
+                    newPrivate.sensors.push_back(&(it->second));
                     
                     Private::privates.insert(make_pair(newPrivate.id, newPrivate));
                 }else{
@@ -53,7 +53,7 @@ void Private::ReadAll()
                     map<string, Sensor>::iterator sensorIterator;
                     sensorIterator=Sensor::sensors.find(buffer);
 
-                    (privateIterator->second).sensors.push_back(sensorIterator->second);
+                    (privateIterator->second).sensors.push_back(&(sensorIterator->second));
 
                 }
                 getline(file, buffer);
@@ -64,9 +64,19 @@ void Private::ReadAll()
     }
 }
 
-vector<Sensor> Private::GetSensors()
+void Private::LinkAll()
 {
-    return sensors;
+    for(auto& row : Private::privates)
+    {
+        // finding associated sensor
+        auto returned_sensor = Sensor::sensors.find(row.second.GetIdSensor());
+        if (returned_sensor != Sensor::sensors.end()) {
+            Sensor& s = returned_sensor->second;
+            row.second.AddSensor(&(s));
+        }
+        
+    }
+    
 }
 
 bool Private::GetTrust()
@@ -82,4 +92,14 @@ void Private::SetTrust(bool newTrust)
 void Private::AddScore(int toBeAdded)
 {
     this->GetProfile()->AddToScore(toBeAdded);
+}
+
+vector <Sensor*> Private::GetSensors()
+{
+    return this->sensors;
+}
+
+void Private::AddSensor(Sensor* s)
+{
+    this->sensors.push_back(s);
 }

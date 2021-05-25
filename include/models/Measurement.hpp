@@ -6,13 +6,17 @@
 #include <vector>
 #include <map>
 #include <utility>
-
-#include "Model.hpp"
-#include "Sensor.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
+
+#include "Model.hpp"
+#include "Sensor.hpp"
+#include "Attribute.hpp"
+
+class Sensor;
+class Attribute;
 
 using namespace std;
 
@@ -51,10 +55,17 @@ public:
 	string GetIdAttribute();
 	void SetIdAttribute(string id_attribute);
 
+	Sensor* GetSensor();
+	void SetSensor(Sensor* s);
+
+	Attribute* GetAttribute();
+	void SetAttribute(Attribute* attr);
 
 protected:
 
 	// Attributs protégés
+	Sensor* sensor;
+	Attribute* attribute;
 
 	tm date;
 	string id_sensor;

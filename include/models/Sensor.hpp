@@ -1,11 +1,18 @@
 #ifndef SENSOR_HPP
 #define SENSOR_HPP
 
-#include "Model.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
+#include <vector>
+
+#include "Model.hpp"
+#include "Measurement.hpp"
+#include "Private.hpp"
+
+class Measurement;
+class Private;
 
 using namespace std;
 
@@ -42,16 +49,23 @@ public:
 	double GetLatitude();
 	void SetLatitude(double latitude);
 
+	vector<Measurement*> GetMeasurements();
+	void AddMeasurements(Measurement* measurement);
+
+	Private* GetPrivate();
+	void SetPrivate(Private* private_user);
+
 
 protected:
 
 	// Attributs protégés
-
 	string id;
 	double latitude;
 	double longitude;
 
-
+	// Navigation
+	vector<Measurement*> measurements;
+	Private* private_user;
 
 };
 

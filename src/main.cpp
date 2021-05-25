@@ -12,6 +12,14 @@ using namespace std;
 int main(void)
 {
     Attribute::ReadAll();
+    Sensor::ReadAll();
+    Measurement::ReadAll();
+    Cleaner::ReadAll();
+    Private::ReadAll();
+
+    Sensor::LinkAll();
+    Measurement::LinkAll();
+    Attribute::LinkAll();
 
     for(auto& row : Attribute::attributes)
     {
@@ -21,7 +29,7 @@ int main(void)
         cout << endl; 
     }
 
-    Sensor::ReadAll();
+    
 
     for(auto& row : Sensor::sensors)
     {
@@ -33,7 +41,6 @@ int main(void)
 
     
 
-    Measurement::ReadAll();
     tm buff_date;
 
     for(auto& row : Measurement::measurements)
@@ -45,31 +52,33 @@ int main(void)
 		buff_date = row.second.GetDate();
 
         cout << " time:" << buff_date.tm_mday << "/" <<
-        	buff_date.tm_mon << "/" << buff_date.tm_year;
+        	buff_date.tm_mon+1 << "/" << buff_date.tm_year+1900;
         cout << endl; 
     }
 
-    Cleaner::ReadAll();
 
     for(auto& row : Cleaner::cleaners)
     {
         cout << "id:" << row.second.GetId();
         cout << " longitude:" << row.second.GetLongitude();
         cout << " latitude:" << row.second.GetLatitude();
-        cout << " activity_start:" << row.second.GetActivityStart().tm_mday << "/" << row.second.GetActivityStart().tm_mon << "/" << row.second.GetActivityStart().tm_year << " " << row.second.GetActivityStart().tm_hour << ":" << row.second.GetActivityStart().tm_min;
-        cout << " activity_end:" << row.second.GetActivityEnd().tm_mday << "/" << row.second.GetActivityEnd().tm_mon << "/" << row.second.GetActivityEnd().tm_year << " " << row.second.GetActivityEnd().tm_hour << ":" << row.second.GetActivityEnd().tm_min;
+
+        struct tm activityStart = row.second.GetActivityStart();
+        struct tm activityEnd = row.second.GetActivityEnd();
+
+        cout << " activity_start:" << std::setfill ('0') << std::setw(2) << activityStart.tm_mday << "/" << std::setw(2) << activityStart.tm_mon+1 << "/" << activityStart.tm_year+1900 << " " << std::setw(2) << activityStart.tm_hour << ":" << std::setw(2) << activityStart.tm_min;
+        cout << " activity_end:" << std::setw(2) << activityEnd.tm_mday << "/" << std::setw(2) << activityEnd.tm_mon+1 << "/" << activityEnd.tm_year+1900 << " " << std::setw(2) << activityEnd.tm_hour << ":" << std::setw(2) << activityEnd.tm_min;
         cout << endl; 
     }
 
-    Private::ReadAll();
     for(auto& row : Private::privates)
     {
-         cout << "id : "<<row.first<<endl;
-         vector <Sensor> sensors = row.second.GetSensors();
-         for(long unsigned int i=0; i<sensors.size();++i){
-             cout << "\t sensor id : "<<sensors[i].GetId()<<endl;
-         }
-         cout<< endl;
+        cout << "id : "<<row.first<<endl;
+        vector <Sensor*> sensors = row.second.GetSensors();
+        for(long unsigned int i=0; i<sensors.size();++i){
+            cout << "\t sensor id : "<<sensors[i]->GetId()<<endl;
+        }
+        cout<< endl;
     }
 
 

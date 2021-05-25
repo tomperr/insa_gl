@@ -1,4 +1,5 @@
 #include "Attribute.hpp"
+#include "Measurement.hpp"
 
 // Initialisation des variables statiques
 string Attribute::filename = "./ressources/attributes.csv";
@@ -40,6 +41,20 @@ void Attribute::ReadAll()
     }
 }
 
+void Attribute::LinkAll()
+{
+    for(auto& row : Measurement::measurements)
+    {
+        // finding associated attribute
+        auto returned_attribute = Attribute::attributes.find(row.second.GetIdAttribute());
+        if (returned_attribute != Attribute::attributes.end()) {
+            Attribute& attr = returned_attribute->second;
+            attr.AddMeasurements(&(row.second));
+        }
+        
+    }
+}
+
 string Attribute::GetId()
 {
     return this->id;
@@ -68,4 +83,14 @@ void Attribute::SetUnit(string unit)
 void Attribute::SetDescription(string description)
 {
     this->description = description;
+}
+
+vector<Measurement*> Attribute::GetMeasurements()
+{
+    return this->measurements;
+}
+
+void Attribute::AddMeasurements(Measurement* measurement)
+{
+    this->measurements.push_back(measurement);
 }

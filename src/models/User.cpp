@@ -21,3 +21,13 @@ bool User::AuthenticateUser(string username, string password)
     }
     return false;
 }
+
+string User::GetIdSensor()
+{
+	return this->id_sensor;
+}
+
+void User::SetIdSensor(string id)
+{
+	this->id_sensor = id;
+}

@@ -15,24 +15,31 @@ class User : public Model
     
     public:
 
-    // Variable statique
-    static map<string, User> users;
+        // Variable statique
+        static map<string, User> users;
 
-	// Méthodes statiques
-    static void ReadAll();
-    static void LinkAll();
+        // Méthodes statiques
+        static void ReadAll();
+        static void LinkAll();
 
-    User_profile* GetProfile();
-    bool AuthenticateUser(string username, string password);
+        User_profile* GetProfile();
+        bool AuthenticateUser(string username, string password);
+
+        string GetIdSensor();
+        void SetIdSensor(string id);
     
     protected:
-    // Variables statiques
-    static string filename;      
-    static bool fileHasBeenRead;      
-    static bool objectsHaveBeenLinked;
 
-    string id;
-    User_profile* profile;
+        // Variables statiques
+        static string filename;      
+        static bool fileHasBeenRead;      
+        static bool objectsHaveBeenLinked;
+
+        string id;
+        string id_sensor;
+
+        // Navigation
+        User_profile* profile;
 };
 
 #endif

@@ -71,6 +71,28 @@ void Measurement::ReadAll()
     }
 }
 
+void Measurement::LinkAll()
+{
+    for(auto& row : Measurement::measurements)
+    {
+        // finding associated sensor
+        auto returned_sensor = Sensor::sensors.find(row.second.GetIdSensor());
+        if (returned_sensor != Sensor::sensors.end()) {
+            Sensor& s = returned_sensor->second;
+            row.second.SetSensor(&s);
+        }
+
+        // finding associated attribute
+        auto returned_attribute = Attribute::attributes.find(row.second.GetIdAttribute());
+        if (returned_attribute != Attribute::attributes.end()) {
+            Attribute& attr = returned_attribute->second;
+            row.second.SetAttribute(&attr);
+        }
+        
+    }
+    
+}
+
 vector< pair<Sensor, Measurement> > Measurement::DetectFakeMeasurement()
 {
 	// just to compile before we implement it
@@ -115,4 +137,24 @@ string Measurement::GetIdAttribute()
 void Measurement::SetIdAttribute(string id_attribute)
 {
 	this->id_attribute = id_attribute;
+}
+
+Sensor* Measurement::GetSensor()
+{
+    return this->sensor;
+}
+
+void Measurement::SetSensor(Sensor* s)
+{
+    this->sensor = s;
+}
+
+Attribute* Measurement::GetAttribute()
+{
+    return this->attribute;
+}
+
+void Measurement::SetAttribute(Attribute* attr)
+{
+    this->attribute = attr;
 }

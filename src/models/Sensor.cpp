@@ -3,6 +3,8 @@
 #include <map>
 
 #include "Sensor.hpp"
+#include "Measurement.hpp"
+#include "Private.hpp"
 
 using namespace std;
 
@@ -34,7 +36,7 @@ void Sensor::ReadAll()
         if(file.is_open())
         {
             string buffer;
-            getline(file, buffer); // Enlever la première ligne (nom des colonnes)
+            //getline(file, buffer); // Enlever la première ligne (nom des colonnes)
 
             while(!file.eof())
             {
@@ -60,6 +62,29 @@ void Sensor::ReadAll()
         }
 
         Sensor::fileHasBeenRead = true;
+    }
+}
+
+void Sensor::LinkAll()
+{
+    for(auto& row : Measurement::measurements)
+    {
+        // finding measurement and sensor associations
+        auto returned = Sensor::sensors.find(row.second.GetIdSensor());
+        if (returned != Sensor::sensors.end()) {
+            Sensor& s = returned->second;
+            s.AddMeasurements(&(row.second));
+        }
+    }
+
+    for(auto& row : Private::privates)
+    {
+        // finding private and sensor associations
+        auto returned = Sensor::sensors.find(row.second.GetIdSensor());
+        if (returned != Sensor::sensors.end()) {
+            Sensor& s = returned->second;
+            s.SetPrivate(&(row.second));
+        }
     }
 }
 
@@ -91,4 +116,25 @@ double Sensor::GetLatitude()
 void Sensor::SetLatitude(double latitude)
 {
 	this->latitude = latitude;
+}
+
+
+vector<Measurement*> Sensor::GetMeasurements()
+{
+    return this->measurements;
+}
+
+void Sensor::AddMeasurements(Measurement* measurement)
+{
+    this->measurements.push_back(measurement);
+}
+
+Private* Sensor::GetPrivate()
+{
+    return this->private_user;
+}
+
+void Sensor::SetPrivate(Private* private_user)
+{
+    this->private_user = private_user;
 }

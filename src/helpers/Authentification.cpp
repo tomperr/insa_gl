@@ -1,42 +1,42 @@
 #include "Authentification.hpp"
 
-// Authentification::authenticated = false;
-// Authentification::user = null;
+bool Authentification::authenticated = false;
+User* Authentification::user = nullptr;
 
-// bool Authentification::isAuth()
-// {
-//     return Authentification::authenticated;
-// }
+bool Authentification::isAuth()
+{
+    return Authentification::authenticated;
+}
 
-// bool Authentification::Auth(User user)
-// {
-//     bool auth = false;
+bool Authentification::Auth(User* user)
+{
+    bool auth = false;
 
-//     if(user != nullptr && !Authentification::isAuth())
-//     {
-//         Authentification::user = user;
-//         Authentification::authenticated = true;
-//         auth = true;
-//     }
+    if(user != nullptr && !Authentification::isAuth())
+    {
+        Authentification::user = user;
+        Authentification::authenticated = true;
+        auth = true;
+    }
 
-//     return auth;
-// }
+    return auth;
+}
 
-// bool Authentification::Deauth()
-// {
-//     bool deauth = false;
+bool Authentification::Deauth()
+{
+    bool deauth = false;
 
-//     if(Authentification::isAuth())
-//     {
-//         Authentification::user = nullptr;
-//         Authentification::authenticated = false;
-//         deauth = true;
-//     }
+    if(Authentification::isAuth())
+    {
+        Authentification::user = nullptr;
+        Authentification::authenticated = false;
+        deauth = true;
+    }
 
-//     return deauth;
-// }
+    return deauth;
+}
 
-// User Authentification::getUser()
-// {
-//     return Authentification::user;
-// }
+User* Authentification::getUser()
+{
+    return Authentification::user;
+}
