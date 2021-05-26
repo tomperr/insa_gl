@@ -12,7 +12,7 @@ class HomeViews {
     // Le numéro rendu est le choix de l'utilisateur
     // /!\ Attention dépend de si l'utilisateur est connecté
     // ET du type d'utilisateur
-    int Home(); 
+    static int Home(); 
 };
 
 #endif

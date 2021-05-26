@@ -2,7 +2,7 @@
 
 int HomeViews::Home()
 {
-    bool firstIteration = false;
+    bool firstIteration = true;
     bool choiceIsCorrect = false;
     int choice;
 
@@ -10,9 +10,12 @@ int HomeViews::Home()
     {
         int maximumChoice = 0;
 
-        if(!firstIteration)
+        if(firstIteration)
         {
             firstIteration = true;
+        }
+        else
+        {
             cout << "Choix erroné !" << endl;
         }
 

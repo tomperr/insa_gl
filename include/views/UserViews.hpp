@@ -7,10 +7,10 @@ using namespace std;
 
 class UserViews {
     public:
-    string GetUsername();
-    string GetPassword();
-    void LoginSuccess();
-    void LoginFailed(int code);
+    static string GetUsername();
+    static string GetPassword();
+    static void LoginSuccess();
+    static void LoginFailed(int code);
 };
 
 #endif
