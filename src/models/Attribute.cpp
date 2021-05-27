@@ -43,6 +43,7 @@ void Attribute::ReadAll()
 
 void Attribute::LinkAll()
 {
+    
     for(auto& row : Measurement::measurements)
     {
         // finding associated attribute
@@ -53,6 +54,8 @@ void Attribute::LinkAll()
         }
         
     }
+
+    Attribute::objectsHaveBeenLinked = true;
 }
 
 string Attribute::GetId()

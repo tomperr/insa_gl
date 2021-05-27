@@ -15,12 +15,21 @@ int main(void)
     Sensor::ReadAll();
     Measurement::ReadAll();
     Cleaner::ReadAll();
-    Private::ReadAll();
+    User::ReadAll();
+    User_profile::ReadAll();
 
     Sensor::LinkAll();
     Measurement::LinkAll();
     Attribute::LinkAll();
+    User::LinkAll();
 
+    Private::ReadAll();
+    Private::LinkAll();
+
+    User_profile::LinkAll();
+
+
+    /*
     for(auto& row : Attribute::attributes)
     {
         cout << "id:" << row.second.GetId();
@@ -70,17 +79,39 @@ int main(void)
         cout << " activity_end:" << std::setw(2) << activityEnd.tm_mday << "/" << std::setw(2) << activityEnd.tm_mon+1 << "/" << activityEnd.tm_year+1900 << " " << std::setw(2) << activityEnd.tm_hour << ":" << std::setw(2) << activityEnd.tm_min;
         cout << endl; 
     }
+    */
+
+    /*
+    for(auto& row : User::users)
+    {
+        cout << "id_user : "<< row.first << endl;
+        cout << "id_user_sensor : " << row.second.GetIdSensor() << endl;
+        cout << endl;
+    }
+    */
 
     for(auto& row : Private::privates)
     {
-        cout << "id : "<<row.first<<endl;
-        vector <Sensor*> sensors = row.second.GetSensors();
-        for(long unsigned int i=0; i<sensors.size();++i){
-            cout << "\t sensor id : "<<sensors[i]->GetId()<<endl;
+        cout << "id_private : "<< row.first << endl;
+        cout << "pass : "<< row.second.GetProfile()->GetPassword() << endl;
+
+        for (Sensor* s: row.second.GetSensors())
+        {
+            cout << "private_sensor_id : " << s->GetId() << endl;
         }
+
         cout<< endl;
     }
-
+    
+    /*
+    for(auto& row : User_profile::user_profiles)
+    {
+        cout << "id_user : "<< row.first << endl;
+        cout << "user_role : " << row.second.GetRole() << endl;
+        cout << "id_user_sensor : " << row.second.GetUser()->GetIdSensor() << endl;
+        cout << endl;
+    }
+    */
 
     return 0;
 }

@@ -90,6 +90,8 @@ void Measurement::LinkAll()
         }
         
     }
+
+    Measurement::objectsHaveBeenLinked = true;
     
 }
 

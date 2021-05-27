@@ -1,7 +1,10 @@
-#include "User_profile.hpp"
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
+
+#include "User_profile.hpp"
+#include "User.hpp"
+
 string User_profile::filename = "./ressources/user_profiles.csv";
 bool User_profile::fileHasBeenRead = false;
 bool User_profile::objectsHaveBeenLinked = false;
@@ -39,20 +42,23 @@ void User_profile::ReadAll()
                 getline(file, profile.id, ';');
 
                 if(file.eof()) break;
-                string mdp;
+                
                 getline(file, profile.mdp, ';');
+
                 string Role;
                 getline(file, Role, ';');
                 if (Role=="Admin")
                     profile.role = User_profile::Role::admin;
                 else 
                     profile.role = User_profile::Role::private_user;
+
                 string Trust;
                 getline(file, Trust, ';');
                 if (Trust =="True")
                     profile.trust =true;
                 else 
                     profile.trust =false;
+                
                 profile.score = 0;
                 getline(file, buffer); // Enlever le \r\n de fin de ligne
 
@@ -62,4 +68,29 @@ void User_profile::ReadAll()
 
         User_profile::fileHasBeenRead = true;
     }
+}
+
+void User_profile::LinkAll()
+{
+    for(auto& row : User_profile::user_profiles)
+    {
+        // find user
+        auto returned_user = User::users.find(row.first);
+        if (returned_user != User::users.end()) {
+            User& user = returned_user->second;
+            row.second.SetUser(&(user));
+        }        
+    }
+
+    User_profile::objectsHaveBeenLinked = true;
+}
+
+User* User_profile::GetUser()
+{
+    return this->user;
+}
+
+void User_profile::SetUser(User* user)
+{
+    this->user = user;
 }

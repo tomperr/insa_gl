@@ -13,7 +13,7 @@ class Sensor;
 
 using namespace std;
 
-class Private : public User
+class Private: public User
 {
     public:
 
@@ -23,6 +23,8 @@ class Private : public User
         //Méthode publique
         Private ();
         Private (string id, vector <Sensor*> sensors);
+        Private (string id_user, string id_sensor);
+
 
         // Méthodes statiques
         static void ReadAll();

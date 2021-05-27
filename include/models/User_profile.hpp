@@ -4,7 +4,11 @@
 #include <string>
 #include <iostream>
 #include <map>
+
 #include "Model.hpp"
+#include "User.hpp"
+
+class User;
 
 using namespace std;
 
@@ -36,6 +40,9 @@ class User_profile : public Model
 
         User_profile::Role GetRole(){ return role; }
         void SetRole(User_profile::Role newRole){ this->role = newRole;}
+
+        User* GetUser();
+        void SetUser(User* user);
         
     protected:
         // Variables statiques
@@ -48,6 +55,9 @@ class User_profile : public Model
         bool trust;
         int score;
         User_profile::Role role;
+
+        // Navigation
+        User* user;
 };
 
 #endif
