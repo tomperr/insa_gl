@@ -38,4 +38,9 @@ fclean: clean
 	@rm -f $(BIN_DIR)/$(FNAME)
 	@echo "Executable deleted!"
 
+setup:
+	@mkdir -p $(INC_DIR) $(INC_DIR)/controllers $(INC_DIR)/helpers $(INC_DIR)/models $(INC_DIR)/views
+	@mkdir -p $(SRC_DIR) $(SRC_DIR)/controllers $(SRC_DIR)/helpers $(SRC_DIR)/models $(SRC_DIR)/views
+	@mkdir -p $(OBJ_DIR) $(OBJ_DIR)/controllers $(OBJ_DIR)/helpers $(OBJ_DIR)/models $(OBJ_DIR)/views
+
 re: fclean all
