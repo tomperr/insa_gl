@@ -6,11 +6,9 @@ Ce projet est réalisé par 5 étudiants de l'INSA Lyon, en première année de 
 
 Le projet est développé en C++, en utilisant un Makefile compatible sur systèmes Unix.
 
-## Installation
+## Installation
 
-A la racine du projet, exécutez :
-`make setup`
-pour créer les dossiers nécessaires à la compilation du projet.
+A la racine du projet, exécutez `make setup` pour créer les dossiers nécessaires à la compilation du projet.
 
 ## Makefile
 
