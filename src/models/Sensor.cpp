@@ -86,6 +86,8 @@ void Sensor::LinkAll()
             s.SetPrivate(&(row.second));
         }
     }
+
+    Sensor::objectsHaveBeenLinked = true;
 }
 
 string Sensor::GetId()

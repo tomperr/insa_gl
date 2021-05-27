@@ -18,8 +18,18 @@ Private :: Private(string id, vector <Sensor*> sensors)
     this->sensors=sensors;
 }
 
+Private::Private (string id_user, string id_sensor)
+{
+    this->id = id_user;
+    this->id_sensor = id_sensor;
+}
+
 void Private::ReadAll()
 {
+
+    // Private must not read from file but from users and user_profiles already loaded
+
+    /*
     if(!Private::fileHasBeenRead)
     {
         ifstream file(Private::filename.c_str(), ifstream::in); 
@@ -62,6 +72,19 @@ void Private::ReadAll()
 
         Private::fileHasBeenRead = true;
     }
+    */
+
+    for (auto& row : User::users)
+    {
+        if (row.second.GetProfile()->GetRole() == User_profile::Role::private_user)
+        {
+            Private new_private(row.second.GetId(), row.second.GetIdSensor());
+            new_private.SetProfile(row.second.GetProfile());
+            Private::privates.insert(make_pair(new_private.GetId(), new_private));
+        }
+    }
+
+    Private::fileHasBeenRead = true;
 }
 
 void Private::LinkAll()
@@ -73,9 +96,11 @@ void Private::LinkAll()
         if (returned_sensor != Sensor::sensors.end()) {
             Sensor& s = returned_sensor->second;
             row.second.AddSensor(&(s));
-        }
+        }        
         
     }
+
+    Private::objectsHaveBeenLinked = true;
     
 }
 
