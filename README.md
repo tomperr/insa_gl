@@ -16,11 +16,17 @@ Les commandes du Makefile sont :
 
 - `make setup` : crée les dossiers de l'architecture du projet
 - `make all` : compile le projet
+- `make test` : compile les tests unitaires
 - `make clean` : supprime les fichiers compilés .obj
 - `make fclean` : supprime les fichiers compilés .obj et l'exécutable
-- `make re` : supprimer les fichiers compilés .obj, l'exécutable, et recompile le projet
+- `make re` : supprime les fichiers compilés .obj, l'exécutable, et recompile le projet
 
 ## Exécution
 
-Après compilation du projet (voir sections précédentes), à la racine, lancer l'exécutable 
+Après compilation du projet (voir sections précédentes), à la racine, lancez l'exécutable 
 `./gl_project.out`
+
+## Tests unitaires
+
+Après compilation des tests (voir sections précédentes), à la racine, lancez l'exécutable 
+`./gl_project.test`
