@@ -32,6 +32,7 @@ public:
 	// Méthodes statiques
     static void ReadAll();
     static void LinkAll();
+	static void SetFilename(string filename);
 
 	// Méthodes publiques
 

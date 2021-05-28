@@ -33,6 +33,7 @@ public:
     // Méthodes statiques
     static void ReadAll();
     static void LinkAll();
+	static void SetFilename(string filename);
 
 	// Attributs publiques
 	static multimap<string, Measurement> measurements;

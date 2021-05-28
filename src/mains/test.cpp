@@ -5,11 +5,14 @@
 
 using namespace std;
 
+int runned = 0;
+
 void runHelper(const char *f_name, void (*f)(void))
 {
     cout << f_name << "... ";
     (*f)();
     cout << "success" << endl;
+    runned++;
 }
 
 #include "Attribute.hpp"
@@ -29,38 +32,34 @@ void test_addition()
 
 void test_sanity_id_user()
 {
+    User::SetFilename("./ressources/tests/user_profile_sanity/users.csv");
+    User_profile::SetFilename("./ressources/tests/user_profile_sanity/user_profiles.csv");
+    Sensor::SetFilename("./ressources/tests/user_profile_sanity/sensors.csv");
+
+    User::ReadAll();
+    User_profile::ReadAll();
+    Sensor::ReadAll();
+
+    User::LinkAll();
+    User_profile::LinkAll();
+    Sensor::LinkAll();
+
     for (auto& row: User::users)
     {
         User user = row.second;
         User_profile* profile = user.GetProfile();
 
-        assert(user.GetId() == profile->GetId()); 
+        assert(profile == nullptr || user.GetId() == profile->GetId()); 
     }
 }
 
 int main()
 {
-    // reading and linking data
-    Attribute::ReadAll();
-    Sensor::ReadAll();
-    Measurement::ReadAll();
-    Cleaner::ReadAll();
-    User::ReadAll();
-    User_profile::ReadAll();
-
-    Sensor::LinkAll();
-    Measurement::LinkAll();
-    Attribute::LinkAll();
-    User::LinkAll();
-
-    Private::ReadAll();
-    Private::LinkAll();
-
-    User_profile::LinkAll();
-
     // running tests
     run(test_addition);
     run(test_sanity_id_user);
+
+    cout << endl << runned << " tests runned successfully" << endl;
 
     return 0;
 }

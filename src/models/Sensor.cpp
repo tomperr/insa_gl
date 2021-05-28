@@ -140,3 +140,8 @@ void Sensor::SetPrivate(Private* private_user)
 {
     this->private_user = private_user;
 }
+
+void Sensor::SetFilename(string filename)
+{
+    Sensor::filename = filename;
+}

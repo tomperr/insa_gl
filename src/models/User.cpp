@@ -42,10 +42,11 @@ void User::LinkAll()
     {
         // find user_profile
         auto returned_profile = User_profile::user_profiles.find(row.first);
-        if (returned_profile != User_profile::user_profiles.end()) {
+        if (returned_profile != User_profile::user_profiles.end())
+        {
             User_profile& user_profile = returned_profile->second;
             row.second.SetProfile(&(user_profile));
-        }        
+        }
     }
 
     User::objectsHaveBeenLinked = true;
@@ -90,4 +91,9 @@ string User::GetIdSensor()
 void User::SetIdSensor(string id)
 {
 	this->id_sensor = id;
+}
+
+void User::SetFilename(string filename)
+{
+    User::filename = filename;
 }

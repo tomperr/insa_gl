@@ -22,6 +22,7 @@ class User_profile : public Model
         // Méthodes statiques
         static void ReadAll();
         static void LinkAll();
+        static void SetFilename(string filename);
 
         // Méthodes publiques
         User_profile ();

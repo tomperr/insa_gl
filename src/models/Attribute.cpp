@@ -97,3 +97,8 @@ void Attribute::AddMeasurements(Measurement* measurement)
 {
     this->measurements.push_back(measurement);
 }
+
+void Attribute::SetFilename(string filename)
+{
+    Attribute::filename = filename;
+}

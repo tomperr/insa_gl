@@ -121,3 +121,8 @@ void Cleaner::SetActivityEnd(tm activity_end)
 {
 	this->activity_end = activity_end;
 }
+
+void Cleaner::SetFilename(string filename)
+{
+    Cleaner::filename = filename;
+}

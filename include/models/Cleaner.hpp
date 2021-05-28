@@ -30,6 +30,7 @@ public:
 
 	static void ReadAll();
     static void LinkAll();
+	static void SetFilename(string filename);
 
 	// Getters et Setters
 

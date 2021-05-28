@@ -94,3 +94,8 @@ void User_profile::SetUser(User* user)
 {
     this->user = user;
 }
+
+void User_profile::SetFilename(string filename)
+{
+    User_profile::filename = filename;
+}

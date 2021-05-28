@@ -25,6 +25,7 @@ class User : public Model
         // Méthodes statiques
         static void ReadAll();
         static void LinkAll();
+        static void SetFilename(string filename);
 
         bool AuthenticateUser(string username, string password);
 

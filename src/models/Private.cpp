@@ -127,3 +127,8 @@ void Private::AddSensor(Sensor* s)
 {
     this->sensors.push_back(s);
 }
+
+void Private::SetFilename(string filename)
+{
+    Private::filename = filename;
+}

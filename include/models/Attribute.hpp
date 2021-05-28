@@ -40,6 +40,7 @@ class Attribute : public Model
         // Méthodes statiques
         static void ReadAll();
         static void LinkAll();
+        static void SetFilename(string filename);
 
         // Getters
         string GetId();
@@ -51,7 +52,9 @@ class Attribute : public Model
         void SetId(string id);
         void SetUnit(string unit);
         void SetDescription(string description);
+
         void AddMeasurements(Measurement* measurement);
+
 
 };
 
