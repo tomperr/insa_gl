@@ -4,7 +4,7 @@
 
 Ce projet est réalisé par 5 étudiants de l'INSA Lyon, en première année de cycle d'ingénieur en informatique. L'objectif est de partir d'un besoin, de concevoir une solution, et de la réaliser (du moins, pour les fonctionnalités principales).
 
-Le projet est développé en C++, en utilisant un Makefile compatible sur systèmes Unix.
+Le projet est développé en C++, en utilisant un Makefile compatible sur systèmes Unix et Windows.
 
 ## Installation
 
@@ -21,6 +21,8 @@ Les commandes du Makefile sont :
 - `make clean` : supprime les fichiers compilés .obj
 - `make fclean` : supprime les fichiers compilés .obj et l'exécutable
 - `make re` : supprime les fichiers compilés .obj, l'exécutable, et recompile le projet
+
+Pour les machines Windows, il est nécessaire de changer les variables `RM` et `MKDIR`. 
 
 ## Exécution
 
