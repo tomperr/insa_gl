@@ -96,8 +96,7 @@ void Private::LinkAll()
         if (returned_sensor != Sensor::sensors.end()) {
             Sensor& s = returned_sensor->second;
             row.second.AddSensor(&(s));
-        }        
-        
+        }   
     }
 
     Private::objectsHaveBeenLinked = true;
