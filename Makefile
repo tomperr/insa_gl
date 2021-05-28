@@ -1,13 +1,16 @@
 NAME = gl_project
-EXT = .out
+EXT = .out # unix
+# EXT = .exe # windows
 FNAME = $(NAME)$(EXT)
 
 TEST_NAME = gl_project
-TEST_EXT = .test
+TEST_EXT = .test # unix
+# TEST_EXT = .exe # windows
 TEST_FNAME = $(TEST_NAME)$(TEST_EXT)
 
 DEV_NAME = gl_project
-DEV_EXT = .dev
+DEV_EXT = .dev # unix
+# DEV_EXT = .exe # windows
 DEV_FNAME = $(DEV_NAME)$(DEV_EXT)
 
 # RM = del /f # windows

@@ -22,7 +22,7 @@ Les commandes du Makefile sont :
 - `make fclean` : supprime les fichiers compilés .obj et l'exécutable
 - `make re` : supprime les fichiers compilés .obj, l'exécutable, et recompile le projet
 
-Pour les machines Windows, il est nécessaire de changer les variables `RM` et `MKDIR`. 
+Pour les machines Windows, il est nécessaire de changer les variables `RM`, `MKDIR`, ainsi que les variables d'extensions de fichiers `*EXT`. 
 
 ## Exécution
 
