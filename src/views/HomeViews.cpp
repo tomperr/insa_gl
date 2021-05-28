@@ -57,11 +57,13 @@ int HomeViews::Home()
             }
         }
 
-        
+        cout << "> ";
         cin >> choice;
 
         if(choice >= 0 && choice <= maximumChoice)
             choiceIsCorrect = true;
+        else
+            cout << "Erreur de saisie." << endl << endl;
     }
     
     return choice;

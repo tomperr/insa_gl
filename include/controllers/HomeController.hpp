@@ -8,10 +8,7 @@ public:
 
 	HomeController();
 
-	void ShowHome();
-
-private:
-
+	int ShowHome();
 	void NavigateTo(int choice);
 
 };
