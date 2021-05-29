@@ -132,3 +132,10 @@ void Private::SetFilename(string filename)
 {
     Private::filename = filename;
 }
+
+void Private::EmptyData()
+{
+    Private::privates = map<string, Private>();
+    Private::objectsHaveBeenLinked = false;
+    Private::fileHasBeenRead = false;
+}

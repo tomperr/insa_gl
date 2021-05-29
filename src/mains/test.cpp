@@ -51,6 +51,10 @@ void test_sanity_id_user()
 
         assert(user.GetId() == profile->GetId()); 
     }
+
+    User::EmptyData();
+    User_profile::EmptyData();
+    Sensor::EmptyData();
 }
 
 int main()

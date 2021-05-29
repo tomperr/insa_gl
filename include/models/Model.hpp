@@ -15,6 +15,7 @@ class Model
     public:
     static void ReadAll();
     static void LinkAll();
+    static void EmptyData();
 };
 
 // Initialisation des variables statiques

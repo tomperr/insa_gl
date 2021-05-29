@@ -97,3 +97,10 @@ void User::SetFilename(string filename)
 {
     User::filename = filename;
 }
+
+void User::EmptyData()
+{
+    User::users = map<string, User>();
+    User::objectsHaveBeenLinked = false;
+    User::fileHasBeenRead = false;
+}

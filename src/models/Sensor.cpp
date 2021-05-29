@@ -145,3 +145,10 @@ void Sensor::SetFilename(string filename)
 {
     Sensor::filename = filename;
 }
+
+void Sensor::EmptyData()
+{
+    Sensor::sensors = map<string, Sensor>();
+    Sensor::objectsHaveBeenLinked = false;
+    Sensor::fileHasBeenRead = false;
+}

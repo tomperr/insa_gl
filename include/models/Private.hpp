@@ -30,6 +30,7 @@ class Private: public User
         static void ReadAll();
         static void LinkAll();
         static void SetFilename(string filename);
+        static void EmptyData();
 
         vector <Sensor*> GetSensors();
         void AddSensor(Sensor* s);

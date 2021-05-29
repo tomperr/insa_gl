@@ -34,6 +34,7 @@ public:
     static void ReadAll();
     static void LinkAll();
 	static void SetFilename(string filename);
+	static void EmptyData();
 
 	// Attributs publiques
 	static multimap<string, Measurement> measurements;

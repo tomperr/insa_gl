@@ -102,3 +102,10 @@ void Attribute::SetFilename(string filename)
 {
     Attribute::filename = filename;
 }
+
+void Attribute::EmptyData()
+{
+    Attribute::attributes = map<string, Attribute>();
+    Attribute::objectsHaveBeenLinked = false;
+    Attribute::fileHasBeenRead = false;
+}

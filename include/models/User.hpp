@@ -26,6 +26,7 @@ class User : public Model
         static void ReadAll();
         static void LinkAll();
         static void SetFilename(string filename);
+        static void EmptyData();
 
         bool AuthenticateUser(string username, string password);
 

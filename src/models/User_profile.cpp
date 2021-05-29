@@ -99,3 +99,10 @@ void User_profile::SetFilename(string filename)
 {
     User_profile::filename = filename;
 }
+
+void User_profile::EmptyData()
+{
+    User_profile::user_profiles = map<string, User_profile>();
+    User_profile::objectsHaveBeenLinked = false;
+    User_profile::fileHasBeenRead = false;
+}

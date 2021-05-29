@@ -160,3 +160,10 @@ void Measurement::SetAttribute(Attribute* attr)
 {
     this->attribute = attr;
 }
+
+void Measurement::EmptyData()
+{
+    Measurement::measurements = multimap<string, Measurement>();
+    Measurement::objectsHaveBeenLinked = false;
+    Measurement::fileHasBeenRead = false;
+}

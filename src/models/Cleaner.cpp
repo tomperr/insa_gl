@@ -126,3 +126,10 @@ void Cleaner::SetFilename(string filename)
 {
     Cleaner::filename = filename;
 }
+
+void Cleaner::EmptyData()
+{
+    Cleaner::cleaners = map<string, Cleaner>();
+    Cleaner::objectsHaveBeenLinked = false;
+    Cleaner::fileHasBeenRead = false;
+}

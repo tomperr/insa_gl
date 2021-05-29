@@ -33,6 +33,7 @@ public:
     static void ReadAll();
     static void LinkAll();
 	static void SetFilename(string filename);
+	static void EmptyData();
 
 	// Méthodes publiques
 
