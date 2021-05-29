@@ -14,7 +14,8 @@ A la racine du projet, exécutez `make setup` pour créer les dossiers nécessai
 
 Les commandes du Makefile sont :
 
-- `make setup` : crée les dossiers de l'architecture du projet
+- `make setup` : crée les dossiers de l'architecture du projet pour systèmes UNIX
+- `make setup_win` : crée les dossiers de l'architecture du projet pour systèmes WINDOWS
 - `make all` : compile le projet
 - `make test` : compile les tests unitaires
 - `make dev` : compile l'exécutable de debug
@@ -22,19 +23,19 @@ Les commandes du Makefile sont :
 - `make fclean` : supprime les fichiers compilés .obj et l'exécutable
 - `make re` : supprime les fichiers compilés .obj, l'exécutable, et recompile le projet
 
-Pour les machines Windows, il est nécessaire de changer les variables `RM`, `MKDIR`, ainsi que les variables d'extensions de fichiers `*EXT`. 
+Pour les machines Windows, il est nécessaire de changer les variables `RM`, `MKDIR`, `EXT` et `S` (séparateur). 
 
 ## Exécution
 
 Après compilation du projet (voir sections précédentes), à la racine, lancez l'exécutable 
-`./gl_project.out`
+`./gl_app.out` ou `./gl_app.exe` (selon le système)
 
 ## Tests unitaires
 
 Après compilation des tests (voir sections précédentes), à la racine, lancez l'exécutable 
-`./gl_project.test`
+`./gl_test.out` ou `./gl_test.exe` (selon le système)
 
 ## Debug
 
 Après compilation de l'exécutable de debug (voir sections précédentes), à la racine, lancez l'exécutable 
-`./gl_project.dev`
+`./gl_dev.out` ou `./gl_dev.exe` (selon le système)

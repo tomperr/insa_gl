@@ -49,7 +49,7 @@ void test_sanity_id_user()
         User user = row.second;
         User_profile* profile = user.GetProfile();
 
-        assert(profile == nullptr || user.GetId() == profile->GetId()); 
+        assert(user.GetId() == profile->GetId()); 
     }
 }
 

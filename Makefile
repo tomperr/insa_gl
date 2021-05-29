@@ -1,23 +1,25 @@
-NAME = gl_project
-EXT = .out # unix
-# EXT = .exe # windows
+S = \\# win
+# S = /# uniw
+
+RM = del# windows
+# RM = rm -f# unix
+
+MKDIR = md# windows
+# MKDIR = mkdir -p# unix
+
+# EXT = .out# unix
+EXT = .exe# windows
+
+NAME = gl_app
 FNAME = $(NAME)$(EXT)
 
-TEST_NAME = gl_project
-TEST_EXT = .test # unix
-# TEST_EXT = .exe # windows
-TEST_FNAME = $(TEST_NAME)$(TEST_EXT)
+TEST_NAME = gl_test
+TEST_FNAME = $(TEST_NAME)$(EXT)
 
-DEV_NAME = gl_project
-DEV_EXT = .dev # unix
-# DEV_EXT = .exe # windows
-DEV_FNAME = $(DEV_NAME)$(DEV_EXT)
+DEV_NAME = gl_dev
+DEV_FNAME = $(DEV_NAME)$(EXT)
 
-# RM = del /f # windows
-RM = rm -f # unix
 
-# MKDIR = mkdir # windows
-MKDIR = mkdir -p # unix
 
 CC = g++
 FLAGS = -std=c++11 -Wall -Werror -Wextra
@@ -33,6 +35,12 @@ INCLUDES = $(patsubst %, -I%, $(INCLUDES_DIR))
 
 vpath %.cpp src
 vpath %.hpp include
+
+define \n
+
+
+endef
+
 
 SRC_ALL_FILES = $(wildcard $(SRC_DIR)/*/*.cpp)
 OBJ_ALL_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_ALL_FILES))
@@ -62,27 +70,48 @@ $(OBJ_DIR)/%.o: %.cpp
 $(NAME): $(OBJ_EXE_FILES)
 	$(CC) $(FLAGS) $(INCLUDES) -o $(BIN_DIR)/$(FNAME) $(OBJ_EXE_FILES) $(LIBS)
 
-all: $(NAME)
+all:	$(NAME)
 
-dev: $(OBJ_DEV_FILES)
+dev:	$(OBJ_DEV_FILES)
 	$(CC) $(FLAGS) $(INCLUDES) -o $(BIN_DIR)/$(DEV_FNAME) $(OBJ_DEV_FILES) $(LIBS)
 
-test: $(OBJ_TEST_FILES)
+test:	$(OBJ_TEST_FILES)
 	$(CC) $(FLAGS) $(INCLUDES) -o $(BIN_DIR)/$(TEST_FNAME) $(OBJ_TEST_FILES) $(LIBS)
 
 clean:
-	@$(RM) $(OBJ_ALL_FILES)
+	$(foreach x,$(subst /,$(S),$(wildcard $(OBJ_DIR)/*/*.o)), $(RM) $(x)${\n})
 	@echo "Objects deleted!"
 
-fclean: clean
-	@$(RM) $(BIN_DIR)/$(FNAME)
-	@$(RM) $(BIN_DIR)/$(TEST_FNAME)
-	@$(RM) $(BIN_DIR)/$(DEV_FNAME)
+fclean:	clean
+	$(RM) $(BIN_DIR)$(S)$(FNAME)
+	@$(RM) $(BIN_DIR)$(S)$(TEST_FNAME)
+	@$(RM) $(BIN_DIR)$(S)$(DEV_FNAME)
 	@echo "Executable deleted!"
 
 setup:
 	@$(MKDIR) $(INC_DIR) $(INC_DIR)/controllers $(INC_DIR)/helpers $(INC_DIR)/models $(INC_DIR)/views $(INC_DIR)/mains 
 	@$(MKDIR) $(SRC_DIR) $(SRC_DIR)/controllers $(SRC_DIR)/helpers $(SRC_DIR)/models $(SRC_DIR)/views $(SRC_DIR)/mains 
 	@$(MKDIR) $(OBJ_DIR) $(OBJ_DIR)/controllers $(OBJ_DIR)/helpers $(OBJ_DIR)/models $(OBJ_DIR)/views $(OBJ_DIR)/mains 
+
+setup_win:
+	@if not exist "$(INC_DIR)" $(MKDIR) "$(INC_DIR)"
+	@if not exist "$(INC_DIR)/controllers" $(MKDIR) "$(INC_DIR)/controllers"
+	@if not exist "$(INC_DIR)/helpers" $(MKDIR) "$(INC_DIR)/helpers"
+	@if not exist "$(INC_DIR)/models" $(MKDIR) "$(INC_DIR)/models"
+	@if not exist "$(INC_DIR)/views" $(MKDIR) "$(INC_DIR)/views"
+	@if not exist "$(INC_DIR)/mains" $(MKDIR) "$(INC_DIR)/mains"
+	@if not exist "$(SRC_DIR)" $(MKDIR) "$(SRC_DIR)"
+	@if not exist "$(SRC_DIR)/controllers" $(MKDIR) "$(SRC_DIR)/controllers"
+	@if not exist "$(SRC_DIR)/helpers" $(MKDIR) "$(SRC_DIR)/helpers"
+	@if not exist "$(SRC_DIR)/models" $(MKDIR) "$(SRC_DIR)/models"
+	@if not exist "$(SRC_DIR)/views" $(MKDIR) "$(SRC_DIR)/views"
+	@if not exist "$(SRC_DIR)/mains" $(MKDIR) "$(SRC_DIR)/mains"
+	@if not exist "$(OBJ_DIR)" $(MKDIR) "$(OBJ_DIR)"
+	@if not exist "$(OBJ_DIR)/controllers" $(MKDIR) "$(OBJ_DIR)/controllers"
+	@if not exist "$(OBJ_DIR)/helpers" $(MKDIR) "$(OBJ_DIR)/helpers"
+	@if not exist "$(OBJ_DIR)/models" $(MKDIR) "$(OBJ_DIR)/models"
+	@if not exist "$(OBJ_DIR)/views" $(MKDIR) "$(OBJ_DIR)/views"
+	@if not exist "$(OBJ_DIR)/mains" $(MKDIR) "$(OBJ_DIR)/mains"
+	
 
 re: fclean all
