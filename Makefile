@@ -79,11 +79,11 @@ test:	$(OBJ_TEST_FILES)
 	$(CC) $(FLAGS) $(INCLUDES) -o $(BIN_DIR)/$(TEST_FNAME) $(OBJ_TEST_FILES) $(LIBS)
 
 clean:
-	$(foreach x,$(subst /,$(S),$(wildcard $(OBJ_DIR)/*/*.o)), $(RM) $(x)${\n})
+	$(foreach x,$(subst /,$(S),$(wildcard $(OBJ_DIR)/*/*.o)),@$(RM) $(x)${\n})
 	@echo "Objects deleted!"
 
 fclean:	clean
-	$(RM) $(BIN_DIR)$(S)$(FNAME)
+	@$(RM) $(BIN_DIR)$(S)$(FNAME)
 	@$(RM) $(BIN_DIR)$(S)$(TEST_FNAME)
 	@$(RM) $(BIN_DIR)$(S)$(DEV_FNAME)
 	@echo "Executable deleted!"

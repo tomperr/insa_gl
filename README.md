@@ -8,7 +8,7 @@ Le projet est développé en C++, en utilisant un Makefile compatible sur systè
 
 ## Installation
 
-A la racine du projet, exécutez `make setup` pour créer les dossiers nécessaires à la compilation du projet.
+A la racine du projet, exécutez `make setup_win` si vous êtes sur système Windows, sinon `make setup` pour créer les dossiers nécessaires à la compilation du projet.
 
 ## Makefile
 
@@ -23,7 +23,7 @@ Les commandes du Makefile sont :
 - `make fclean` : supprime les fichiers compilés .obj et l'exécutable
 - `make re` : supprime les fichiers compilés .obj, l'exécutable, et recompile le projet
 
-Pour les machines Windows, il est nécessaire de changer les variables `RM`, `MKDIR`, `EXT` et `S` (séparateur). 
+Pour adapter le Makefile selon le système d'exploitation de votre machine, il est nécessaire de changer les variables `RM`, `MKDIR`, `EXT` et `S` (séparateur). 
 
 ## Exécution
 
