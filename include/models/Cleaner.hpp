@@ -1,6 +1,8 @@
 #ifndef CLEANER_HPP
 #define CLEANER_HPP
 
+#define _USE_MATH_DEFINES
+
 #include "Model.hpp"
 #include <iostream>
 #include <fstream>

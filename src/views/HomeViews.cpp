@@ -28,7 +28,7 @@ int HomeViews::Home()
         cout << "2 - Calculer qualité de l'air" << endl;
         cout << "3 - Visualiser les données" << endl;
         cout << "4 - Classer les capteurs par similitude" << endl;
-        cout << "5 - Calculer l'effert d'un \"cleaner\" sur une zone" << endl;
+        cout << "5 - Calculer l'effet d'un \"cleaner\" sur une zone" << endl;
 
         maximumChoice = 5;
 
@@ -42,9 +42,8 @@ int HomeViews::Home()
             {
                 case User_profile::Role::admin:
                 {
-                    cout << "6 - Détecter les capteurs défectueux" << endl;
-                    cout << "7 - Détecter les données fausses" << endl;
-                    maximumChoice = 7;
+                    cout << "6 - Panneau de contrôles administrateur" << endl;
+                    maximumChoice = 6;
                     break;
                 }
 

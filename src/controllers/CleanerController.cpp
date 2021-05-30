@@ -7,12 +7,30 @@ CleanerController :: CleanerController(){
     //bloc vide
 }
 
-void CleanerController ::  ShowData(){
-    cout << "here is the data" << endl;
+void CleanerController::ShowData(){
+    vector<Cleaner> cleaners;
+
+    for(auto it = Cleaner::cleaners.begin(); it != Cleaner::cleaners.end(); ++it)
+    {
+        Cleaner cleaner = (*it).second;
+        cleaners.push_back(cleaner);
+    }
+
+    CleanerViews::ListedData(cleaners);
 }
 
-void CleanerController :: ShowCleanerEffect(){
-    cout << "here is the cleaner effect" <<endl;
+void CleanerController::ShowCleanerEffect(){
+    vector<Cleaner> cleaners;
+
+    for(auto it = Cleaner::cleaners.begin(); it != Cleaner::cleaners.end(); ++it)
+    {
+        Cleaner cleaner = (*it).second;
+        cleaners.push_back(cleaner);
+    }
+    
+    CleanerViews::ListedData(cleaners);
+    Cleaner cleaner = CleanerViews::getCleaner(cleaners);
+    CleanerViews::ResultComputeCleanerEffectOnArea(Cleaner::ComputeCleanerEffectOnArea(cleaner));
 }
 
 

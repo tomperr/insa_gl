@@ -4,7 +4,9 @@ using namespace std;
 
 string UserViews::GetUsername()
 {
+    cout << "Connexion" << endl;
     cout << "Entrez votre identifiant utilisateur :" << endl;
+    cout << "> ";
     string username;
     cin >> username;
 
@@ -14,6 +16,7 @@ string UserViews::GetUsername()
 string UserViews::GetPassword()
 {
     cout << "Entrez votre mot de passe utilisateur :" << endl;
+    cout << "> ";
     string password;
     cin >> password;
 
@@ -52,4 +55,9 @@ void UserViews::LoginFailed(int code)
     }
 
     cout << endl;
+}
+
+void UserViews::LogoutSuccess()
+{
+    cout << "Déconnexion réussi !" << endl;
 }

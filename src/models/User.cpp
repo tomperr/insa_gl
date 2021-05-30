@@ -57,7 +57,7 @@ bool User::AuthenticateUser(string username, string password)
     if ( User::users.count(username) > 0  &&  User::users[username].GetProfile() != nullptr
         && User::users[username].GetProfile()->GetPassword() == password )
     {
-        // Auth(users[username]);
+        Authentification::Auth(&users[username]);
         return true;
     }
     return false;

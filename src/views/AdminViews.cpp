@@ -6,6 +6,8 @@ int AdminViews::ControlPanel()
     bool firstTime = true;
     bool choiceCorrect = false;
 
+    cout << "Panneau de contrôles Administrateur" << endl;
+
     while(!choiceCorrect)
     {
         if(firstTime)
@@ -21,6 +23,7 @@ int AdminViews::ControlPanel()
         cout << "1 - Rechercher les capteurs défectueux" << endl;
         cout << "2 - Rechercher les mesures fausses" << endl;
 
+        cout << "> ";
         cin >> choice;
 
         if(choice >= 0 && choice <= 2)

@@ -18,6 +18,10 @@ void HomeController::NavigateTo(int choice) {
 	
 	// here we'll call other controllers methods
 
+	UserController userC;
+	AdminController adminC;
+	CleanerController cleanC;
+
 	switch (choice)
 	{
 		case 1:
@@ -25,12 +29,14 @@ void HomeController::NavigateTo(int choice) {
 			if(Authentification::isAuth())
 			{
 				// disconnection
-				cout << "disconnection" << endl;
+				// cout << "disconnection" << endl;
+				userC.ShowLogout();
 			}
 			else
 			{
 				// connection
-				cout << "connection" << endl;
+				// cout << "connection" << endl;
+				userC.ShowLogin();
 			}
 			break;
 		}
@@ -59,7 +65,7 @@ void HomeController::NavigateTo(int choice) {
 		case 5:
 		{
 			// compute cleaner effect
-			cout << "compute cleaner effect" << endl;
+			cleanC.ShowCleanerEffect();
 			break;
 		}
 
@@ -73,7 +79,7 @@ void HomeController::NavigateTo(int choice) {
 				if (profile->GetRole() == User_profile::Role::admin)
 				{
 					// show faulty sensors
-					cout << "show faulty sensors" << endl;
+					adminC.ShowControlPanel();
 				}
 				else if (profile->GetRole() == User_profile::Role::private_user)
 				{

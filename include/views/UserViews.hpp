@@ -11,6 +11,7 @@ class UserViews {
     static string GetPassword();
     static void LoginSuccess();
     static void LoginFailed(int code);
+    static void LogoutSuccess();
 };
 
 #endif

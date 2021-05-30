@@ -9,8 +9,10 @@
 
 #include "Model.hpp"
 #include "User_profile.hpp"
+#include "Authentification.hpp"
 
 class User_profile;
+class Authentificate;
 
 using namespace std;
 
@@ -28,7 +30,7 @@ class User : public Model
         static void SetFilename(string filename);
         static void EmptyData();
 
-        bool AuthenticateUser(string username, string password);
+        static bool AuthenticateUser(string username, string password);
 
         User_profile* GetProfile();
         void SetProfile(User_profile* profile);

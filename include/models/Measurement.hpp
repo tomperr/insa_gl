@@ -42,7 +42,7 @@ public:
 	// Méthodes publiques
 	Measurement();
 	Measurement(tm date, string id_sensor, string id_attribute, double value);
-	vector< pair<Sensor, Measurement> > DetectFakeMeasurement();
+	static vector< pair<Sensor, Measurement> > DetectFakeMeasurement();
 
 	// Getters et Setters
 	double GetValue();

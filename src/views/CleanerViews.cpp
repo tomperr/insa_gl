@@ -2,6 +2,7 @@
 
 void CleanerViews::ListedData(vector<Cleaner> cleaners)
 {
+    cout << "Liste détaillé des cleaners" << endl;
     for(Cleaner cleaner : cleaners)
     {
         struct tm acstart = cleaner.GetActivityStart();
@@ -40,6 +41,7 @@ Cleaner CleanerViews::getCleaner(vector<Cleaner> cleaners)
             cout << index++ << " - CleanerID: " << cleaner.GetId() << endl;
         }
 
+        cout << "> ";
         cin >> choice;
         if(choice >= 0 && choice <= index - 1)
         {
@@ -59,7 +61,7 @@ void CleanerViews::ResultComputeCleanerEffectOnArea(vector<double> data)
     }
     else
     {
-        cout << "Effet sur la zone :" << endl;
+        cout << "Effet sur la zone (en pourcentage) :" << endl;
         cout << "O3: " << data[0] << endl;
         cout << "SO2: " << data[1] << endl;
         cout << "NO2: " << data[2] << endl;

@@ -1,6 +1,11 @@
 #ifndef HOMECONTROLLER_HPP
 #define HOMECONTROLLER_HPP
 
+#include <iostream>
+#include "UserController.hpp"
+#include "AdminController.hpp"
+#include "CleanerController.hpp"
+
 class HomeController
 {
 
