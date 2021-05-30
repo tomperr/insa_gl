@@ -46,12 +46,9 @@ void Measurement::ReadAll()
             {
                 Measurement newMeasurement;
 
-                // TODO : NE FONCTIONNE PAS
                 getline(file, buffer, ';');
                 istringstream ss_acStart(buffer);
-                //ss_acStart >> get_time(&(newMeasurement.date), "%d/%m/%Y %R");
                 ss_acStart >> get_time(&(newMeasurement.date), "%Y-%m-%d %H:%M:%S");
-                // timestamp to 
 
                 if(file.eof()) break;
 

@@ -36,7 +36,7 @@ public:
     static void LinkAll();
 	static void SetFilename(string filename);
 	static void EmptyData();
-	static vector<double> ComputeCleanerEffectOnArea(Cleaner aCleaner, int radius= 1);
+	static vector<double> ComputeCleanerEffectOnArea(Cleaner aCleaner, int radius= 50);
 
 	// Getters et Setters
 
