@@ -48,7 +48,7 @@ public:
 	double GetValue();
 	void SetValue(double value);
 
-	tm GetDate();
+	tm* GetDate();
 	void SetDate(tm date);
 
 	string GetIdSensor();

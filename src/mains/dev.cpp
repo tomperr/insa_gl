@@ -38,6 +38,15 @@ int main()
         }
     }
 
+    cout << "Test des effets d'un cleaner" <<endl;
+    map<string, Cleaner>::iterator cleanerIt=Cleaner::cleaners.begin();
+    vector<double> cleanerEffect = Cleaner::ComputeCleanerEffectOnArea((cleanerIt)->second, 100);
+    for (auto& row: cleanerEffect)
+    {
+        cout <<  row <<" %" << endl;
+        
+    }
+
     Attribute::EmptyData();
     Sensor::EmptyData();
     Measurement::EmptyData();
@@ -57,5 +66,7 @@ int main()
         }
     }
 
+
+    
     return 0;
 }

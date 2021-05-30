@@ -128,7 +128,7 @@ vector<Measurement*> Sensor::GetMeasurements()
 
 void Sensor::AddMeasurements(Measurement* measurement)
 {
-    this->measurements.push_back(measurement);
+    (this->measurements).push_back(measurement);
 }
 
 Private* Sensor::GetPrivate()

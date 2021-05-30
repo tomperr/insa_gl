@@ -9,6 +9,10 @@
 #include <ctime>
 #include <iomanip>
 #include <sstream>
+#include <vector>
+#include <cmath>
+#include "Sensor.hpp"
+#include "Measurement.hpp"
 
 using namespace std;
 
@@ -32,6 +36,7 @@ public:
     static void LinkAll();
 	static void SetFilename(string filename);
 	static void EmptyData();
+	static vector<double> ComputeCleanerEffectOnArea(Cleaner aCleaner, int radius= 1);
 
 	// Getters et Setters
 
@@ -65,6 +70,11 @@ protected:
 	double longitude;
 	tm activity_start;
 	tm activity_end;
+
+private :
+
+	//Méthodes static
+	static vector <Sensor> getSensorsInCircularAreaByRadius (Cleaner aCleaner, int radius);
 
 };
 
