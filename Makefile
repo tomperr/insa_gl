@@ -48,7 +48,8 @@ OBJ_ALL_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_ALL_FILES))
 SRC_BASE_FILES = 	$(wildcard $(SRC_DIR)/controllers/*.cpp)  \
 					$(wildcard $(SRC_DIR)/models/*.cpp) \
 					$(wildcard $(SRC_DIR)/helpers/*.cpp) \
-					$(wildcard $(SRC_DIR)/views/*.cpp)
+					$(wildcard $(SRC_DIR)/views/*.cpp) \
+					$(wildcard $(SRC_DIR)/tests/*.cpp) \
 
 OBJ_BASE_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_BASE_FILES))
 
@@ -89,9 +90,9 @@ fclean:	clean
 	@echo "Executable deleted!"
 
 setup:
-	@$(MKDIR) $(INC_DIR) $(INC_DIR)/controllers $(INC_DIR)/helpers $(INC_DIR)/models $(INC_DIR)/views $(INC_DIR)/mains 
-	@$(MKDIR) $(SRC_DIR) $(SRC_DIR)/controllers $(SRC_DIR)/helpers $(SRC_DIR)/models $(SRC_DIR)/views $(SRC_DIR)/mains 
-	@$(MKDIR) $(OBJ_DIR) $(OBJ_DIR)/controllers $(OBJ_DIR)/helpers $(OBJ_DIR)/models $(OBJ_DIR)/views $(OBJ_DIR)/mains 
+	@$(MKDIR) $(INC_DIR) $(INC_DIR)/controllers $(INC_DIR)/helpers $(INC_DIR)/models $(INC_DIR)/views $(INC_DIR)/mains $(INC_DIR)/tests 
+	@$(MKDIR) $(SRC_DIR) $(SRC_DIR)/controllers $(SRC_DIR)/helpers $(SRC_DIR)/models $(SRC_DIR)/views $(SRC_DIR)/mains $(SRC_DIR)/tests 
+	@$(MKDIR) $(OBJ_DIR) $(OBJ_DIR)/controllers $(OBJ_DIR)/helpers $(OBJ_DIR)/models $(OBJ_DIR)/views $(OBJ_DIR)/mains $(OBJ_DIR)/tests 
 
 setup_win:
 	@if not exist "$(INC_DIR)" $(MKDIR) "$(INC_DIR)"
@@ -100,18 +101,21 @@ setup_win:
 	@if not exist "$(INC_DIR)/models" $(MKDIR) "$(INC_DIR)/models"
 	@if not exist "$(INC_DIR)/views" $(MKDIR) "$(INC_DIR)/views"
 	@if not exist "$(INC_DIR)/mains" $(MKDIR) "$(INC_DIR)/mains"
+	@if not exist "$(OBJ_DIR)/tests" $(MKDIR) "$(OBJ_DIR)/tests"
 	@if not exist "$(SRC_DIR)" $(MKDIR) "$(SRC_DIR)"
 	@if not exist "$(SRC_DIR)/controllers" $(MKDIR) "$(SRC_DIR)/controllers"
 	@if not exist "$(SRC_DIR)/helpers" $(MKDIR) "$(SRC_DIR)/helpers"
 	@if not exist "$(SRC_DIR)/models" $(MKDIR) "$(SRC_DIR)/models"
 	@if not exist "$(SRC_DIR)/views" $(MKDIR) "$(SRC_DIR)/views"
 	@if not exist "$(SRC_DIR)/mains" $(MKDIR) "$(SRC_DIR)/mains"
+	@if not exist "$(OBJ_DIR)/tests" $(MKDIR) "$(OBJ_DIR)/tests"
 	@if not exist "$(OBJ_DIR)" $(MKDIR) "$(OBJ_DIR)"
 	@if not exist "$(OBJ_DIR)/controllers" $(MKDIR) "$(OBJ_DIR)/controllers"
 	@if not exist "$(OBJ_DIR)/helpers" $(MKDIR) "$(OBJ_DIR)/helpers"
 	@if not exist "$(OBJ_DIR)/models" $(MKDIR) "$(OBJ_DIR)/models"
 	@if not exist "$(OBJ_DIR)/views" $(MKDIR) "$(OBJ_DIR)/views"
 	@if not exist "$(OBJ_DIR)/mains" $(MKDIR) "$(OBJ_DIR)/mains"
+	@if not exist "$(OBJ_DIR)/tests" $(MKDIR) "$(OBJ_DIR)/tests"
 	
 
 re: fclean all
