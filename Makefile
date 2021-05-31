@@ -1,14 +1,14 @@
-S = \\# win
-# S = /# uniw
+# S = \\# win
+S = /# unix
 
-RM = del# windows
-# RM = rm -f# unix
+# RM = del# windows
+RM = rm -f# unix
 
-MKDIR = md# windows
-# MKDIR = mkdir -p# unix
+# MKDIR = md# windows
+MKDIR = mkdir -p# unix
 
-# EXT = .out# unix
-EXT = .exe# windows
+#EXT = .exe# windows
+EXT = .out# unix
 
 NAME = gl_app
 FNAME = $(NAME)$(EXT)
