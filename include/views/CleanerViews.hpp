@@ -14,6 +14,7 @@ class CleanerViews
     static void ListedData(vector<Cleaner> cleaners);
     static Cleaner getCleaner(vector<Cleaner> cleaners);
     static void ResultComputeCleanerEffectOnArea(vector<double> data);
+    static int GetRadius();
 };
 
 #endif

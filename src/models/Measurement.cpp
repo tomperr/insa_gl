@@ -20,7 +20,7 @@ multimap<string, Measurement> Measurement::measurements = multimap<string, Measu
 
 Measurement::Measurement()
 {
-	// silence id golden
+    this->sensor = nullptr;
 }
 
 Measurement::Measurement(tm date, string id_sensor, string id_attribute, double value)
@@ -28,7 +28,8 @@ Measurement::Measurement(tm date, string id_sensor, string id_attribute, double 
 	this->date = date;
 	this->id_sensor = id_sensor;
 	this->id_attribute = id_attribute;
-	this->value = value;	
+	this->value = value;
+    this->sensor = nullptr;
 }
 
 void Measurement::ReadAll()
@@ -40,7 +41,7 @@ void Measurement::ReadAll()
         if(file.is_open())
         {
             string buffer;
-            getline(file, buffer); // Enlever la première ligne (nom des colonnes)
+            // getline(file, buffer); // Enlever la première ligne (nom des colonnes)
 
             while(!file.eof())
             {

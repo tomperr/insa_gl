@@ -68,3 +68,19 @@ void CleanerViews::ResultComputeCleanerEffectOnArea(vector<double> data)
         cout << "PM10: " << data[3] << endl;
     }
 }
+
+int CleanerViews::GetRadius()
+{
+    int radius = -1;
+
+    while(radius <= 0)
+    {
+        cout << "Rayon de la zone : ";
+        cin >> radius;
+
+        if(radius <= 0)
+            cout << "Erreur de saisie." << endl << endl;
+    }
+
+    return radius;
+}

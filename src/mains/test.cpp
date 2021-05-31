@@ -3,6 +3,8 @@
 #include <iostream>
 #include "TestAuthentification.hpp"
 #include "TestCleaner.hpp"
+#include "TestReadingData.hpp"
+#include "TestLinkingData.hpp"
 
 using namespace std;
 
@@ -15,7 +17,6 @@ void runHelper(const char *f_name, void (*f)(void))
     cout << "success" << endl;
     runned++;
 }
-
 
 void test_authentification()
 {
@@ -32,6 +33,25 @@ void test_authentification()
     run(test_integration_ok);
 }
 
+void test_reading_data()
+{
+    run(test_reading_users);
+    run(test_reading_user_profiles);
+    run(test_reading_sensors);
+    run(test_reading_measurements);
+    run(test_reading_cleaners);
+    run(test_reading_attributes);
+}
+
+void test_linking_data()
+{
+    run(test_linking_users);
+    run(test_linking_user_profiles);
+    run(test_linking_sensors);
+    run(test_linking_measurements);
+    run(test_linking_attributes);
+}
+
 void test_cleaner()
 {
     run(test_compute_cleaner_effect_test);
@@ -42,6 +62,8 @@ int main()
     // running tests
     test_cleaner();
     test_authentification();
+    test_reading_data();
+    test_linking_data();
 
     cout << endl << runned << " tests runned successfully" << endl;
 

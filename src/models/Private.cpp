@@ -2,7 +2,7 @@
 
 using namespace std;
 
-string Private::filename = "./ressources/users.csv";
+string Private::filename = "";
 bool Private::fileHasBeenRead = false;
 bool Private::objectsHaveBeenLinked = false;
 map<string, Private> Private::privates = map<string, Private>();
@@ -26,57 +26,10 @@ Private::Private (string id_user, string id_sensor)
 
 void Private::ReadAll()
 {
-
-    // Private must not read from file but from users and user_profiles already loaded
-
-    /*
-    if(!Private::fileHasBeenRead)
-    {
-        ifstream file(Private::filename.c_str(), ifstream::in); 
-    
-        if(file.is_open())
-        {
-            string buffer;
-
-            while(!file.eof())
-            {
-                getline(file,buffer,';');
-                if(!Private::privates.count(buffer)){ //on rentre ici si c est la premiere fois que nous rencontrons ce user
-                    Private newPrivate;
-
-                    newPrivate.id=buffer;
-
-                    getline(file,buffer,';');
-                    Sensor::ReadAll();
-                    map<string, Sensor>::iterator it;
-                    it=Sensor::sensors.find(buffer);
-
-                    newPrivate.sensors.push_back(&(it->second));
-                    
-                    Private::privates.insert(make_pair(newPrivate.id, newPrivate));
-                }else{
-                    map<string, Private>::iterator privateIterator;
-                    privateIterator=Private::privates.find(buffer);
-
-                    getline(file,buffer,';');
-                    Sensor::ReadAll();
-                    map<string, Sensor>::iterator sensorIterator;
-                    sensorIterator=Sensor::sensors.find(buffer);
-
-                    (privateIterator->second).sensors.push_back(&(sensorIterator->second));
-
-                }
-                getline(file, buffer);
-            }        
-        }
-
-        Private::fileHasBeenRead = true;
-    }
-    */
-
     for (auto& row : User::users)
     {
-        if (row.second.GetProfile()->GetRole() == User_profile::Role::private_user)
+        if (row.second.GetProfile() != nullptr &&
+            row.second.GetProfile()->GetRole() == User_profile::Role::private_user)
         {
             Private new_private(row.second.GetId(), row.second.GetIdSensor());
             new_private.SetProfile(row.second.GetProfile());

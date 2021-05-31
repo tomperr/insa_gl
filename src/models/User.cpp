@@ -6,6 +6,11 @@ bool User::fileHasBeenRead = false;
 bool User::objectsHaveBeenLinked = false;
 map<string, User> User::users = map<string, User>();
 
+User::User()
+{
+    this->SetProfile(nullptr);
+}
+
 void User::ReadAll()
 {
     if(!User::fileHasBeenRead)

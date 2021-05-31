@@ -24,6 +24,8 @@ class User : public Model
         // Variable statique
         static map<string, User> users;
 
+        User();
+
         // Méthodes statiques
         static void ReadAll();
         static void LinkAll();

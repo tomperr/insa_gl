@@ -20,7 +20,7 @@ User_profile::User_profile (string Id,string Mdp,bool Trust,int Score,User_profi
 }
 User_profile::User_profile ()
 {
-
+    this->SetUser(nullptr);
 }
 
 

@@ -18,7 +18,7 @@ bool Authentification::Auth(User* user)
         Authentification::authenticated = true;
         auth = true;
     }
-
+         
     return auth;
 }
 

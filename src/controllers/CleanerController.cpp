@@ -30,7 +30,8 @@ void CleanerController::ShowCleanerEffect(){
     
     CleanerViews::ListedData(cleaners);
     Cleaner cleaner = CleanerViews::getCleaner(cleaners);
-    CleanerViews::ResultComputeCleanerEffectOnArea(Cleaner::ComputeCleanerEffectOnArea(cleaner));
+    int radius = CleanerViews::GetRadius();
+    CleanerViews::ResultComputeCleanerEffectOnArea(Cleaner::ComputeCleanerEffectOnArea(cleaner, radius));
 }
 
 

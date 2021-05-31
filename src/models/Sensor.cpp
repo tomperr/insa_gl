@@ -17,7 +17,7 @@ map<string, Sensor> Sensor::sensors = map<string, Sensor>();
 
 Sensor::Sensor()
 {
-	// silence id golden
+    this->SetPrivate(nullptr);
 }
 
 Sensor::Sensor(string id, double latitude, double longitude)
@@ -25,6 +25,7 @@ Sensor::Sensor(string id, double latitude, double longitude)
 	this->id = id;
 	this->latitude = latitude;
 	this->longitude = longitude;
+    this->SetPrivate(nullptr);
 }
 
 void Sensor::ReadAll()
