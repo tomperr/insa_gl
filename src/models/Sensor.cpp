@@ -159,58 +159,84 @@ vector<Sensor> Sensor::DetectFailedSensors(map<string, Sensor> sensors, double e
 {
     //map<int, Sensor> listFailedSensors = map<int, Sensor>();
     vector<Sensor> failed_sensors = vector<Sensor>();
-    int nbFailed = 0;
-        
-    for(const auto& elem : sensors){ // Pour chaque capteur passé en paramètre
-        int lat = ((Sensor) elem.second).GetLatitude();
-        int lon = ((Sensor) elem.second).GetLongitude();
-        
-        vector<Measurement*> measurements = ((Sensor) elem.second).GetMeasurements();
-        double donneesInitiales[4];
+
+    for(const auto& elem : sensors)
+    {
+        Sensor sensor = elem.second;
+        vector<Measurement*> measurements = sensor.GetMeasurements();
+
+        double lastMeasurements[4];
         for(int i=0; i<4; i++){
-            donneesInitiales[i] = measurements[measurements.size()-1-i]->GetValue();
+            lastMeasurements[i] = measurements[measurements.size()-1-(3-i)]->GetValue();
         }
-         
-        Sensor listeVoisins[sensors.size()];
-        int count = 0;
-        
+
+        vector<Sensor> listeVoisins;
         for(const auto& toCompare : sensors){ // On retraverse la liste pour trouver les sensors voisins
             if( ((Sensor) elem.second).GetId() != ((Sensor) toCompare.second).GetId()){ 
                 int latC = ((Sensor) toCompare.second).GetLatitude();
                 int lonC = ((Sensor) toCompare.second).GetLongitude();
-                int distance = sqrt(pow(lat-latC,2)+pow(lon-lonC,2));
+                int distance = sqrt(pow(sensor.GetLatitude()-latC,2)+pow(sensor.GetLongitude()-lonC,2));
                 
                 if(distance<0.1){ // Si le capteur est assez proche de celui qui nous intéresse
-                    listeVoisins[count] = (Sensor) toCompare.second; // On le rajoute à la liste des voisins
-                    count++;
+                    listeVoisins.push_back((Sensor)(toCompare.second));
                 }
             }
         }
-        
-        double moyenneDonneesVoisins[4]; // Nous allons faire la moyenne des données des voisins ...
-        double coef; // ... et comparer cette moyenne aux données du sensor
-        
-        for(int i=0; i<count; i++){ // On traverse la liste des voisins pour faire la moyenne
-            vector<Measurement*> measurements = listeVoisins[i].GetMeasurements();
-            for(int i=0; i<4; i++){
-                moyenneDonneesVoisins[i] += measurements[measurements.size()-1-i]->GetValue();
+
+        double moyennesTotalVoisins[4];
+        for(int i=0; i<4; i++)
+        {
+            moyennesTotalVoisins[i] = 0;
+        }
+
+        for (Sensor voisin: listeVoisins)
+        {
+
+            vector<Measurement*> voisin_measurements = voisin.GetMeasurements();
+
+            double moyenneCurrentVoisin[4];
+            for(int i=0; i<4; i++)
+            {
+                moyenneCurrentVoisin[i] = 0;
             }
-            coef++;
+
+            for (int i=0; i< (int) (voisin_measurements.size()); i++)
+            {
+                moyenneCurrentVoisin[i%4] += voisin_measurements[i]->GetValue();
+            }
+
+            for(int i=0; i<4; i++)
+            {
+                moyenneCurrentVoisin[i] /= (voisin_measurements.size()/4);
+            }
+
+            for(int i=0; i<4; i++)
+            {
+                moyennesTotalVoisins[i] += moyenneCurrentVoisin[i];
+            }
+
+        }
+
+        for(int i=0; i<4; i++)
+        {
+            moyennesTotalVoisins[i] /= listeVoisins.size();
         }
 
         int wrongMeasures = 0;
         for(int i=0; i<4; i++){
-            moyenneDonneesVoisins[i] = moyenneDonneesVoisins[i]/coef;
-            double comparison = abs(donneesInitiales[i]/moyenneDonneesVoisins[i] - 1)*100;
+            double comparison = abs(lastMeasurements[i]/moyennesTotalVoisins[i] - 1)*100;
+
             if(comparison > errorMarginPercentage){
                 wrongMeasures++;
             }
+
         }
         if(wrongMeasures>2){
-            //listFailedSensors.insert(make_pair(nbFailed, (Sensor) elem.second));
             failed_sensors.push_back((Sensor) elem.second);
-            nbFailed++;
         }
+
     }
+
     return failed_sensors;
+
 }

@@ -29,8 +29,7 @@ int main()
 
     User_profile::LinkAll();
 
-    cout << "test" << endl;
-    Sensor::DetectFailedSensors(Sensor::sensors, 1);
+    cout << Sensor::DetectFailedSensors(Sensor::sensors, 50).size() << endl;
 
     return 0;
 }

@@ -11,9 +11,7 @@ void test_detect_failed_sensors()
     Sensor::LinkAll();
     Measurement::LinkAll();
 
-    vector<Sensor> failedSensors = Sensor::DetectFailedSensors(Sensor::sensors,50.0);
-
-    cout << endl << "failed sensors : " << failedSensors.size() << endl;
+    vector<Sensor> failedSensors = Sensor::DetectFailedSensors(Sensor::sensors,15.0);
 
     assert(failedSensors.size() == 2);
     
