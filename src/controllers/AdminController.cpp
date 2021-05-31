@@ -18,8 +18,8 @@ void AdminController::ShowControlPanel() {
 
 		case 1:
 		{
-			//AdminViews::ResultFailedSensors(Sensor::)
-			cout << "ResultFailedSensors" << endl;
+			AdminViews::ResultFailedSensors(Sensor::DetectFailedSensors(Sensor::sensors, 1));
+			//cout << "ResultFailedSensors" << endl;
 			break;
 		}
 

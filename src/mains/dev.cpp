@@ -29,44 +29,8 @@ int main()
 
     User_profile::LinkAll();
 
-    for (auto& row: Private::privates)
-    {
-        cout << "id_private : " << row.second.GetId() << endl;
-        for (Sensor* s: row.second.GetSensors())
-        {
-            cout << "id_private_sensor : " << s->GetId() << endl;
-        }
-    }
+    cout << "test" << endl;
+    Sensor::DetectFailedSensors(Sensor::sensors, 1);
 
-    cout << "Test des effets d'un cleaner" <<endl;
-    map<string, Cleaner>::iterator cleanerIt=Cleaner::cleaners.begin();
-    vector<double> cleanerEffect = Cleaner::ComputeCleanerEffectOnArea((cleanerIt)->second, 50);
-    for (auto& row: cleanerEffect)
-    {
-        cout <<  row <<" %" << endl;
-        
-    }
-
-    Attribute::EmptyData();
-    Sensor::EmptyData();
-    Measurement::EmptyData();
-    Cleaner::EmptyData();
-    User::EmptyData();
-    User_profile::EmptyData();
-    Private::EmptyData();
-
-    cout << "EMPTY" << endl;
-
-    for (auto& row: Private::privates)
-    {
-        cout << "id_private : " << row.second.GetId() << endl;
-        for (Sensor* s: row.second.GetSensors())
-        {
-            cout << "id_private_sensor : " << s->GetId() << endl;
-        }
-    }
-
-
-    
     return 0;
 }

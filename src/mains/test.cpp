@@ -5,6 +5,7 @@
 #include "TestCleaner.hpp"
 #include "TestReadingData.hpp"
 #include "TestLinkingData.hpp"
+#include "TestFailedSensors.hpp"
 
 using namespace std;
 
@@ -57,6 +58,12 @@ void test_cleaner()
     run(test_compute_cleaner_effect_test);
 }
 
+
+void test_failed_sensors()
+{
+    run(test_detect_failed_sensors);
+}
+
 int main()
 {
     // running tests
@@ -64,6 +71,7 @@ int main()
     test_authentification();
     test_reading_data();
     test_linking_data();
+    test_failed_sensors();
 
     cout << endl << runned << " tests runned successfully" << endl;
 

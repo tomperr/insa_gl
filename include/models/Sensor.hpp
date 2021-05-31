@@ -34,6 +34,7 @@ public:
     static void LinkAll();
 	static void SetFilename(string filename);
 	static void EmptyData();
+	static vector<Sensor> DetectFailedSensors(map<string, Sensor> sensors, double errorMarginPercentage);
 
 	// Méthodes publiques
 
@@ -56,6 +57,7 @@ public:
 
 	Private* GetPrivate();
 	void SetPrivate(Private* private_user);
+
 
 
 protected:
