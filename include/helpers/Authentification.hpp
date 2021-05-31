@@ -1,6 +1,6 @@
 #ifndef AUTHENTIFICATION_HPP
 #define AUTHENTIFICATION_HPP
-
+class User;
 #include "User.hpp"
 
 class Authentification

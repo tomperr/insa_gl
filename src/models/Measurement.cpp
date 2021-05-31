@@ -158,6 +158,11 @@ void Measurement::SetAttribute(Attribute* attr)
     this->attribute = attr;
 }
 
+void Measurement::SetFilename(string filename)
+{
+    Measurement::filename = filename;
+}
+
 void Measurement::EmptyData()
 {
     Measurement::measurements = multimap<string, Measurement>();

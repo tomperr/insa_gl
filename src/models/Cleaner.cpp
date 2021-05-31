@@ -155,24 +155,25 @@ vector<double> Cleaner::ComputeCleanerEffectOnArea(Cleaner aCleaner, int radius)
                 continue;
             }
         }
-
+        
         sommeProgressionOzone+=(1-ozoneValueAfter/ozoneValueBefore);
-        sommeProgressionAzote+=(1-azoteValueAfter/azoteValueBefore);
         sommeProgressionSoufre+=(1-soufreValueAfter/soufreValueBefore);
+        sommeProgressionAzote+=(1-azoteValueAfter/azoteValueBefore);
         sommeProgressionFines+=(1-finesValueAfter/finesValueBefore);
 
     }
 
     double moyenneProgressionOzone=sommeProgressionOzone/nombreDeCapteurs;
-    double moyenneProgressionAzote=sommeProgressionAzote/nombreDeCapteurs;
     double moyenneProgressionSoufre=sommeProgressionSoufre/nombreDeCapteurs;
+    double moyenneProgressionAzote=sommeProgressionAzote/nombreDeCapteurs;
     double moyenneProgressionFines=sommeProgressionFines/nombreDeCapteurs;
 
     vector <double> moyenneProgression= vector<double>();
-    moyenneProgression.push_back(100*moyenneProgressionOzone);
+
+    moyenneProgression.push_back(100*moyenneProgressionFines);
     moyenneProgression.push_back(100*moyenneProgressionAzote);
     moyenneProgression.push_back(100*moyenneProgressionSoufre);
-    moyenneProgression.push_back(100*moyenneProgressionFines);
+    moyenneProgression.push_back(100*moyenneProgressionOzone);
     
     return moyenneProgression;
 }

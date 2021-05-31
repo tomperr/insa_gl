@@ -40,7 +40,7 @@ int main()
 
     cout << "Test des effets d'un cleaner" <<endl;
     map<string, Cleaner>::iterator cleanerIt=Cleaner::cleaners.begin();
-    vector<double> cleanerEffect = Cleaner::ComputeCleanerEffectOnArea((cleanerIt)->second, 100);
+    vector<double> cleanerEffect = Cleaner::ComputeCleanerEffectOnArea((cleanerIt)->second, 50);
     for (auto& row: cleanerEffect)
     {
         cout <<  row <<" %" << endl;
